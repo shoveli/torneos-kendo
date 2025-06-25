@@ -170,7 +170,7 @@ export default function TournamentManager() {
             </div>
             <div className="flex flex-col">
               <h1 className="text-4xl font-bold text-gray-900 mb-2">Torneo Kuma Kai</h1>
-              <p className="text-lg text-gray-600">Gestor de torneos todos contra todos</p>
+              <p className="text-lg text-gray-600">A reventarse</p>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function TournamentManager() {
             </TabsTrigger>
             <TabsTrigger value="matches" className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              Partidos
+              Combates
             </TabsTrigger>
             <TabsTrigger value="standings" className="flex items-center gap-2">
               <Trophy className="w-4 h-4" />
@@ -194,14 +194,14 @@ export default function TournamentManager() {
           <TabsContent value="players" className="space-y-4">
             <Card>
               <CardHeader>
-                <CardTitle>Agregar Jugadores</CardTitle>
-                <CardDescription>Añade al menos dos jugadores para comenzar el torneo.</CardDescription>
+                <CardTitle>Agregar KumaKenshis</CardTitle>
+                <CardDescription>Se necesitan al menos dos kenshis para comenzar el torneo.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {!tournamentStarted && (
                   <div className="flex gap-2">
                     <Input
-                      placeholder="Nombre del jugador"
+                      placeholder="Nombre del kenshi"
                       value={newPlayerName}
                       onChange={(e) => setNewPlayerName(e.target.value)}
                       onKeyPress={(e) => e.key === "Enter" && addPlayer()}
@@ -229,12 +229,12 @@ export default function TournamentManager() {
                 </div>
 
                 {players.length === 0 && (
-                  <p className="text-center text-muted-foreground py-8">No se han agregado jugadores todavía</p>
+                  <p className="text-center text-muted-foreground py-8">No se han agregado kenshis todavía</p>
                 )}
 
                 {!tournamentStarted && players.length >= 2 && (
                   <Button onClick={generateMatches} className="w-full" size="lg">
-                    Iniciar Torneo ({players.length} jugadores, {(players.length * (players.length - 1)) / 2} partidos)
+                    Iniciar Torneo ({players.length} kenshis, {(players.length * (players.length - 1)) / 2} peleas)
                   </Button>
                 )}
 
@@ -252,16 +252,16 @@ export default function TournamentManager() {
           <TabsContent value="matches" className="space-y-4">
             <Card>
               <CardHeader>
-                <CardTitle>Resultados de Partidos</CardTitle>
+                <CardTitle>Resultados de los combates</CardTitle>
                 <CardDescription>
-                  Ingresa el ganador y la puntuación de cada partido. Victoria = 3 puntos, Empate = 1 punto, Derrota = 0
+                  Ingresa el ganador y la puntuación de cada combate. Victoria = 3 puntos, Empate = 1 punto, Derrota = 0
                   puntos.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 {matches.length === 0 ? (
                   <p className="text-center text-muted-foreground py-8">
-                    No se han generado partidos aún. Primero agrega jugadores e inicia el torneo.
+                    No se han generado combates aún. Primero agrega kenshis e inicia el torneo.
                   </p>
                 ) : (
                   <div className="space-y-4">
@@ -285,7 +285,7 @@ export default function TournamentManager() {
               <CardContent>
                 {standings.length === 0 ? (
                   <p className="text-center text-muted-foreground py-8">
-                    No hay clasificación disponible. Inicia el torneo e ingresa los resultados de los partidos.
+                    No hay clasificación disponible. Inicia el torneo e ingresa los resultados de los combates.
                   </p>
                 ) : (
                   <Table>
